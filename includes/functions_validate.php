@@ -195,6 +195,16 @@ function validate_username($username)
 	}
 	$db->sql_freeresult($result);
 
+	$sql = "SELECT id FROM accounts WHERE account = '" . $db->sql_escape($username) . "'";
+	$db->sql_return_on_error(true);
+	$result = $db->sql_query($sql);
+	$db->sql_return_on_error(false);
+	if ($result)
+	{
+		return array('error' => true, 'error_msg' => $lang['Username_taken']);
+	}
+	$db->sql_freeresult($result);
+
 	$sql = "SELECT group_name
 		FROM " . GROUPS_TABLE . "
 		WHERE LOWER(group_name) = '" . $db->sql_escape(strtolower($username)) . "'";

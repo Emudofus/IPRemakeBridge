@@ -1,3 +1,2 @@
-README export-ignore
-readme.txt export-ignore
-.gitattributes export-ignore
+config.php
+cache/*.php
