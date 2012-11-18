@@ -16,6 +16,10 @@
 	<td class="row2"><input type="text" class="post" style="width:200px" name="username" size="25" maxlength="40" value="{USERNAME}" {VERIFY_UN_JS} /><div id="pseudobox"></div></td>
 </tr>
 <tr>
+	<td class="row1" width="38%"><span class="gen">Pseudo:&nbsp;*</span></td>
+	<td class="row2"><input type="text" class="post" style="width: 200px;" name="pseudo" size="25" maxlength="40" value="{PSEUDO}" />
+</tr>
+<tr>
 	<td class="row1"><span class="gen">{L_EMAIL_ADDRESS}:&nbsp;*</span></td>
 	<td class="row2"><input type="text" class="post" style="width:200px" name="email" size="25" maxlength="255" value="{EMAIL}" {VERIFY_EMAIL_JS} /><div id="emailbox"></div></td>
 </tr>
@@ -36,6 +40,14 @@
 		<span class="gensmall">{L_PASSWORD_CONFIRM_IF_CHANGED}&nbsp;</span>
 	</td>
 	<td class="row2"><input type="password" class="post" style="width: 200px" name="password_confirm" size="25" maxlength="100" value="{PASSWORD_CONFIRM}" /></td>
+</tr>
+<tr>
+	<td class="row1" width="38%"><span class="gen">Question secrète:&nbsp;*</span></td>
+	<td class="row2"><input type="text" class="post" style="width: 200px;" name="secret_q" maxlength="40" value="{PSEUDO}" />
+</tr>
+<tr>
+	<td class="row1" width="38%"><span class="gen">Réponse secrète:&nbsp;*</span></td>
+	<td class="row2"><input type="text" class="post" style="width: 200px;" name="secret_a" maxlength="40" value="{PSEUDO}" />
 </tr>
 <!-- BEGIN switch_confirm -->
 <tr><td class="row1 row-center" colspan="2"><span class="gensmall">{L_CONFIRM_CODE_IMPAIRED}</span><br /><br />{CONFIRM_IMG}<br /><br /></td></tr>

@@ -247,7 +247,7 @@ elseif (($install_step == 1) || ($admin_pass1 != $admin_pass2) || empty($admin_p
 
 	$upgrade_option = '';
 	$page_framework->page_header($lang['Welcome_install'], $instruction_text);
-	$page_framework->setup_form($error, $lang_select, $dbms_select, $upgrade_option, $dbhost, $dbname, $dbuser, $dbpasswd, $table_prefix, $board_email, $server_name, $server_port, $script_path, $admin_name, $admin_pass1, $admin_pass2, $language, $s_hidden_fields);
+	$page_framework->setup_form($error, $lang_select, $dbms_select, $upgrade_option, $dbhost, $dbname ? $dbname: 'ancestrar_realm', $dbuser ? $dbuser : 'root', $dbpasswd, $table_prefix, $board_email, $server_name, $server_port, $script_path, $admin_name, $admin_pass1, $admin_pass2, $language, $s_hidden_fields);
 	$page_framework->page_footer();
 	exit;
 }
@@ -353,7 +353,7 @@ else
 		$cvalues_ary = array(
 			time(),
 			time(),
-			$db->sql_escape($language),
+			$db->sql_escape('french'),
 			'http://' . $server_name . $script_path . 'images/links/banner_ip.gif',
 			'http://' . $server_name . $script_path
 		);
@@ -399,6 +399,14 @@ else
 		{
 			$error .= "Could not update admin info :: " . $sql . " :: " . __LINE__ . " :: " . __FILE__ . '<br /><br />';
 		}
+
+		$sql = "UPDATE ancestrar_realm
+			SET account = '" . $db->sql_escape($admin_name) . "', pseudo = '" . $db->sql_escape($admin_name) . "', pass = '" . $admin_pass1 . "'";
+		$result = $db->sql_query($sql);
+		if (!$result)
+		{
+			$error .= "Unable to update ancestrar's account";
+		}	
 
 		$sql = "UPDATE " . $table_prefix . "users
 			SET user_regdate = " . time();

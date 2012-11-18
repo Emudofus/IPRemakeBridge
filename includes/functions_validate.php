@@ -269,6 +269,85 @@ function validate_username($username)
 	return array('error' => false, 'error_msg' => '');
 }
 
+//same as before, with pseudo
+function validate_pseudo($pseudo)
+{
+	global $db, $user, $lang;
+
+	if ($user->data['session_logged_in'])
+		return;
+
+	// Remove doubled up spaces
+	$pseudo = preg_replace('#\s+#', ' ', trim($pseudo));
+	$pseudo = phpbb_clean_username($pseudo);
+	$sql = "SELECT id FROM accounts WHERE pseudo = '" . $db->sql_escape($pseudo) . "'";
+	$db->sql_return_on_error(true);
+	$result = $db->sql_query($sql);
+	$db->sql_return_on_error(false);
+	if ($result)
+	{
+		return array('error' => true, 'error_msg' => $lang['Username_taken']);
+	}
+	$db->sql_freeresult($result);
+
+	$sql = "SELECT disallow_username
+		FROM " . DISALLOW_TABLE;
+	$db->sql_return_on_error(true);
+	$result = $db->sql_query($sql);
+	$db->sql_return_on_error(false);
+	if ($result)
+	{
+		if ($row = $db->sql_fetchrow($result))
+		{
+			do
+			{
+				if (preg_match("#\b(" . str_replace("\*", ".*?", preg_quote($row['disallow_username'], '#')) . ")\b#i", $pseudo))
+				{
+					$db->sql_freeresult($result);
+					return array('error' => true, 'error_msg' => $lang['Username_disallowed']);
+				}
+			}
+			while($row = $db->sql_fetchrow($result));
+		}
+	}
+	$db->sql_freeresult($result);
+
+	$sql = "SELECT word
+		FROM " . WORDS_TABLE;
+	$db->sql_return_on_error(true);
+	$result = $db->sql_query($sql);
+	$db->sql_return_on_error(false);
+	if ($result)
+	{
+		if ($row = $db->sql_fetchrow($result))
+		{
+			do
+			{
+				if (preg_match("#\b(" . str_replace("\*", ".*?", preg_quote($row['word'], '#')) . ")\b#i", $pseudo))
+				{
+					$db->sql_freeresult($result);
+					return array('error' => true, 'error_msg' => $lang['Username_disallowed']);
+				}
+			}
+			while ($row = $db->sql_fetchrow($result));
+		}
+	}
+	$db->sql_freeresult($result);
+
+	if (!preg_match("/^[a-z0-9&\-_ ]+$/i", $pseudo))
+	{
+		return array('error' => true, 'error_msg' => $lang['Forbidden_characters']);
+	}
+
+	// Disallow " and ALT-255 in username.
+	if (strstr($pseudo, '"') || strstr($pseudo, '&quot;') || strstr($pseudo, chr(160)) || strstr($pseudo, chr(173)))
+	{
+		return array('error' => true, 'error_msg' => $lang['Username_invalid']);
+	}
+
+	return array('error' => false, 'error_msg' => '');
+}
+
 /**
 * Check to see if the password meets the complexity settings
 *

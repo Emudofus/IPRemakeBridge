@@ -798,13 +798,13 @@ function get_userdata($target_user, $force_str = false)
 /*
 * Generate an SQL to get users based on a search string
 */
-function get_users_sql($username, $sql_like = false, $all_data = false, $data_escape = true, $clean_username = false)
+function get_users_sql($username, $sql_like = false, $all_data = false, $data_escape = true, $clean_username = false, $col = 'username_clean')
 {
 	global $config, $cache, $db;
 
 	$username = (!empty($clean_username) ? phpbb_clean_username($username) : $username);
 	$sql = "SELECT " . (!empty($all_data) ? "*" : ("user_id, username, username_clean, user_active, user_color, user_level")) . " FROM " . USERS_TABLE . "
-		WHERE username_clean " . (!empty($sql_like) ? (" LIKE ") : (" = ")) . "'" . (!empty($data_escape) ? $db->sql_escape(utf8_clean_string($username)) : $username) . "'" . (!empty($sql_like) ? "" : (" LIMIT 1"));
+		WHERE $col " . (!empty($sql_like) ? (" LIKE ") : (" = ")) . "'" . (!empty($data_escape) ? $db->sql_escape(utf8_clean_string($username)) : $username) . "'" . (!empty($sql_like) ? "" : (" LIMIT 1"));
 
 	return $sql;
 }
