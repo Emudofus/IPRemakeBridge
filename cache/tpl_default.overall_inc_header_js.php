@@ -1,6 +1,6 @@
 <?php
 
-// eXtreme Styles mod cache. Generated on Sun, 18 Nov 2012 20:22:01 +0000 (time = 1353270121)
+// eXtreme Styles mod cache. Generated on Sun, 18 Nov 2012 22:15:28 +0000 (time = 1353276928)
 
 if (!defined('IN_ICYPHOENIX')) exit;
 
@@ -187,5 +187,5 @@ if(isset($js_include_item)) { unset($js_include_item); }
 ?>
 
 <?php if ($this->vars['S_SLIDESHOW']) {  ?>
-<?php  $this->set_filename('xs_include_b47a9870f3f48dc3bac8d0611fb29826', 'album_slideshow_inc_js.tpl', true);  $this->pparse('xs_include_b47a9870f3f48dc3bac8d0611fb29826');  ?>
+<?php  $this->set_filename('xs_include_2ba9bd36c0bf516792f4485b6044bafc', 'album_slideshow_inc_js.tpl', true);  $this->pparse('xs_include_2ba9bd36c0bf516792f4485b6044bafc');  ?>
 <?php } ?>

@@ -1,19 +1,19 @@
 <?php
 
-// eXtreme Styles mod cache. Generated on Sun, 18 Nov 2012 20:22:01 +0000 (time = 1353270121)
+// eXtreme Styles mod cache. Generated on Sun, 18 Nov 2012 22:15:28 +0000 (time = 1353276928)
 
 if (!defined('IN_ICYPHOENIX')) exit;
 
 ?><?php if ($this->vars['S_LOFI']) {  ?>
 <?php if ($this->vars['S_LOFI_BOTS']) {  ?>
-<?php  $this->set_filename('xs_include_9acf860f8d316f408ea8a1162319b99f', '../common/lofi/bots/lofi_bots_header.tpl', true);  $this->pparse('xs_include_9acf860f8d316f408ea8a1162319b99f');  ?>
+<?php  $this->set_filename('xs_include_90f93f94eefa508d03a1b820465d03ec', '../common/lofi/bots/lofi_bots_header.tpl', true);  $this->pparse('xs_include_90f93f94eefa508d03a1b820465d03ec');  ?>
 <?php } else { ?>
-<?php  $this->set_filename('xs_include_8ef33788c03285587d3b65f29d9017f5', '../common/lofi/lofi_header.tpl', true);  $this->pparse('xs_include_8ef33788c03285587d3b65f29d9017f5');  ?>
+<?php  $this->set_filename('xs_include_bbe59d160cd1752a7e9371fec66a4820', '../common/lofi/lofi_header.tpl', true);  $this->pparse('xs_include_bbe59d160cd1752a7e9371fec66a4820');  ?>
 <?php } ?>
 <?php } else { ?>
 <?php echo isset($this->vars['DOCTYPE_HTML']) ? $this->vars['DOCTYPE_HTML'] : $this->lang('DOCTYPE_HTML'); ?>
 <head>
-<?php  $this->set_filename('xs_include_0f037bfd9764e57b3c15621fa85f5d87', 'overall_inc_header.tpl', true);  $this->pparse('xs_include_0f037bfd9764e57b3c15621fa85f5d87');  ?>
+<?php  $this->set_filename('xs_include_8f6d729056c1006106f105ad174a3ef2', 'overall_inc_header.tpl', true);  $this->pparse('xs_include_8f6d729056c1006106f105ad174a3ef2');  ?>
 <?php echo isset($this->vars['EXTRA_CSS_JS']) ? $this->vars['EXTRA_CSS_JS'] : $this->lang('EXTRA_CSS_JS'); ?>
 
 <?php if ($this->vars['S_HEADER_DROPDOWN']) {  ?>
@@ -233,8 +233,8 @@ if(isset($switch_upi2db_on_item)) { unset($switch_upi2db_on_item); }
 </tr>
 <?php } ?>
 
-<?php if ($this->vars['S_PAGE_NAV']) {  ?><tr><td width="100%" colspan="3"><div style="margin-left: 7px; margin-right: 7px;"><?php  $this->set_filename('xs_include_4ebc0d485df8dccdf1dd4ea4db931aab', 'breadcrumbs_main.tpl', true);  $this->pparse('xs_include_4ebc0d485df8dccdf1dd4ea4db931aab');  ?></div></td></tr><?php } ?>
+<?php if ($this->vars['S_PAGE_NAV']) {  ?><tr><td width="100%" colspan="3"><div style="margin-left: 7px; margin-right: 7px;"><?php  $this->set_filename('xs_include_5078fe757d12174956ca47be13cecb56', 'breadcrumbs_main.tpl', true);  $this->pparse('xs_include_5078fe757d12174956ca47be13cecb56');  ?></div></td></tr><?php } ?>
 
-<?php  $this->set_filename('xs_include_9f2c9374fe553a36853f3f5fb1c68074', 'overall_inc_body.tpl', true);  $this->pparse('xs_include_9f2c9374fe553a36853f3f5fb1c68074');  ?>
+<?php  $this->set_filename('xs_include_dc4f45645b4a0547e6c9a9f37cd35aa0', 'overall_inc_body.tpl', true);  $this->pparse('xs_include_dc4f45645b4a0547e6c9a9f37cd35aa0');  ?>
 
 <?php } ?>
